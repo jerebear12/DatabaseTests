@@ -1,0 +1,1299 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elastic.Clients.Elasticsearch</name>
+    </assembly>
+    <members>
+        <member name="P:Elastic.Clients.Elasticsearch.AsyncSearch.AsyncSearch`1.Hits">
+            <summary>
+            Shortcut to the hits returned for this search.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.AsyncSearch.AsyncSearch`1.Documents">
+            <summary>
+            The source documents from the matching hits.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.AsyncSearch.AsyncSearch`1.Total">
+            <summary>
+            The total number of hits returned for this search.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.CountRequest`1.#ctor">
+            <summary>/{index}/_count</summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.CountRequest`1.#ctor(Elastic.Clients.Elasticsearch.Indices)">
+            <summary>/{index}/_count</summary>
+            <param name = "index">Optional, accepts null</param>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1">
+            <summary>
+            Represents a bulk operation to create a document.
+            </summary>
+            <typeparam name="T">The type representing the document being created.</typeparam>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1.#ctor(`0)">
+            <summary>
+            Creates an instance of <see cref="T:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1"/> with the provided <typeparamref name="T"/> document serialized
+            as source data.
+            </summary>
+            <param name="document">The <typeparamref name="T"/> document to index.</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1.#ctor(`0,Elastic.Clients.Elasticsearch.IndexName)">
+            <summary>
+            Creates an instance of <see cref="T:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1"/> with the provided <typeparamref name="T"/> document serialized
+            as source data.
+            </summary>
+            <remarks>When an <see cref="T:Elastic.Clients.Elasticsearch.IndexName"/> is provided, even if the value is <c>null</c>, no further inference will occur.
+            <para>Setting null using this overload is considered explicit intent not to set an index for the operation. In this case
+            it is expected that the bulk request will have defined an index to operate on.</para>
+            </remarks>
+            <param name="document">The <typeparamref name="T"/> document to index.</param>
+            <param name="index">The <see cref="T:Elastic.Clients.Elasticsearch.IndexName"/> which can represent an index, alias or data stream.</param>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1.Pipeline">
+            <summary>
+            ID of the pipeline to use to preprocess incoming documents.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1.DynamicTemplates">
+            <summary>
+            A dictionary from the full name of fields to the name of dynamic templates.
+            If a name matches a dynamic template, then that template will be applied regardless of other match predicates
+            defined in the template. And if a field is already defined in the mapping, then this parameter won’t be used.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1.Operation">
+            <inheritdoc />
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1.Document">
+            <summary>
+            The source document.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1.Serialize(System.IO.Stream,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkCreateOperation`1.SerializeAsync(System.IO.Stream,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkIndexOperation`1.#ctor(`0)">
+            <summary>
+            Creates an instance of <see cref="T:Elastic.Clients.Elasticsearch.Core.Bulk.BulkIndexOperation`1"/> with the provided <typeparamref name="T"/> document serialized
+            as source data.
+            </summary>
+            <param name="document">The <typeparamref name="T"/> document to index.</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkIndexOperation`1.#ctor(`0,Elastic.Clients.Elasticsearch.IndexName)">
+            <summary>
+            Creates an instance of <see cref="T:Elastic.Clients.Elasticsearch.Core.Bulk.BulkIndexOperation`1"/> with the provided <typeparamref name="T"/> document serialized
+            as source data.
+            </summary>
+            <remarks>When an <see cref="T:Elastic.Clients.Elasticsearch.IndexName"/> is provided, even if the value is <c>null</c>, no further inference will occur.
+            <para>Setting null using this overload is considered explicit intent not to set an index for the operation. In this case
+            it is expected that the bulk request will have defined an index to operate on.</para>
+            </remarks>
+            <param name="document">The <typeparamref name="T"/> document to index.</param>
+            <param name="index">The <see cref="T:Elastic.Clients.Elasticsearch.IndexName"/> which can represent an index, alias or data stream.</param>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation">
+            <summary>
+            Provides the base class from which the classes that represent bulk operations are derived.
+            </summary>
+            <remarks>
+            This is an abstract class.
+            </remarks>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.Id">
+            <summary>
+            The document ID.
+            <para>Required for update and delete operations.</para>
+            <para>Optional for create and index operations. If no ID is specified, a document ID is automatically generated.</para>
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.IfPrimaryTerm">
+            <summary>
+            May be set as part of optimistic concurrency control to specify the operation applies only if the primary term matches.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.IfSequenceNumber">
+            <summary>
+             May be set as part of optimistic concurrency control to specify the operation applies only if the sequence number matches.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.Index">
+            <summary>
+            Name of the data stream, index, or index alias to perform the action on.
+            This parameter is required if a target index is not specified in the request path.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.RequireAlias">
+            <summary>
+            If <c>true</c>, the operation action must target an index alias. Defaults to <c>false</c>.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.Routing">
+            <summary>
+            May be set to specify a custom routing value for the document.
+            </summary>
+            <remarks>It automatically follows the behavior of the index/delete operation based on the _routing mapping</remarks>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.Version">
+            <summary>
+            Each bulk operation can include the version value for the document. 
+            </summary>
+            <remarks>This automatically follows the behavior of the index/delete operation based on the _version mapping.</remarks>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.VersionType">
+            <summary>
+            The version type for the document in the current operation.
+            </summary>
+            <remarks>This automatically follows the behavior of the index/delete operation based on the _version mapping.</remarks>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.Operation">
+            <summary>
+            The name for the bulk operation action.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.Serialize(System.IO.Stream,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings)">
+            <summary>
+            Derived operations should override this control how the operation and its payload will be serialised into the HTTP request content <see cref="T:System.IO.Stream"/>.
+            This supports newline delimited JSON data.
+            </summary>
+            <param name="stream">The writable stream for the HTTP request.</param>
+            <param name="settings">The <see cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings"/> for the current client instance.</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.SerializeAsync(System.IO.Stream,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings)">
+            <summary>
+            Derived operations should override this control how the operation and its payload will be asynchronously serialised into the HTTP request content <see cref="T:System.IO.Stream"/>.
+            This supports newline delimited JSON data.
+            </summary>
+            <param name="stream">The writable stream for the HTTP request.</param>
+            <param name="settings">The <see cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings"/> for the current client instance.</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.Elastic#Clients#Elasticsearch#Serialization#IStreamSerializable#Serialize(System.IO.Stream,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings,Elastic.Transport.SerializationFormatting)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperation.Elastic#Clients#Elasticsearch#Serialization#IStreamSerializable#SerializeAsync(System.IO.Stream,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings,Elastic.Transport.SerializationFormatting)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperationDescriptor`1.SerializeInternal(System.Text.Json.Utf8JsonWriter,System.Text.Json.JsonSerializerOptions,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings)">
+            <summary>
+            Must be overridden in derived operations to write their own properties to the <see cref="T:System.Text.Json.Utf8JsonWriter"/>.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Core.Bulk.BulkUpdateOperation.WriteOperation(System.Text.Json.Utf8JsonWriter,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Serialise the operation action line for the NDJSON stream.
+            </summary>
+            <param name="writer"></param>
+            <param name="options"></param>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Core.Bulk.IBulkOperation">
+            <summary>
+            Marker interface for types that can be serialised as an operation of a bulk API request.
+            </summary>
+            <remarks>Allows objects and descriptors to be stored in the same <see cref="T:Elastic.Clients.Elasticsearch.Core.Bulk.BulkOperationsCollection"/>.</remarks>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.SourceRequestDescriptor.Index``1">
+            <summary>
+            A shortcut into calling Index(typeof(TOther)).
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.ElasticsearchClient">
+            <inheritdoc />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClient.#ctor">
+            <summary>
+                Creates a client configured to connect to localhost:9200.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClient.#ctor(System.Uri)">
+            <summary>
+                Creates a client configured to connect to a node reachable at the provided <paramref name="uri" />.
+            </summary>
+            <param name="uri">The <see cref="T:System.Uri" /> to connect to.</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClient.#ctor(System.String,Elastic.Transport.IAuthenticationHeader)">
+            <summary>
+                Creates a client configured to communicate with Elastic Cloud using the provided <paramref name="cloudId" />.
+                <para>See the <see cref="T:Elastic.Transport.CloudNodePool" /> documentation for more information on how to obtain your Cloud Id.</para>
+                <para>
+                    If you want more control, use the <see cref="M:Elastic.Clients.Elasticsearch.ElasticsearchClient.#ctor(Elastic.Clients.Elasticsearch.IElasticsearchClientSettings)" /> constructor and
+                    pass
+                    an instance of
+                    <see cref="P:Elastic.Clients.Elasticsearch.ElasticsearchClient.ElasticsearchClientSettings" /> that takes a <paramref name="cloudId" /> in its constructor as well.
+                </para>
+            </summary>
+            <param name="cloudId">The Cloud ID of an Elastic Cloud deployment.</param>
+            <param name="credentials">The credentials to use for the connection.</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClient.#ctor(Elastic.Clients.Elasticsearch.IElasticsearchClientSettings)">
+            <summary>
+                TODO
+            </summary>
+            <param name="elasticsearchClientSettings"></param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClient.#ctor(Elastic.Transport.ITransport{Elastic.Clients.Elasticsearch.IElasticsearchClientSettings})">
+            <summary>
+                TODO
+            </summary>
+            <param name="transport"></param>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.IndexManyExtensions">
+            <summary>
+            Provides GetMany extensions that make it easier to get many documents given a list of ids
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.IndexManyExtensions.IndexMany``1(Elastic.Clients.Elasticsearch.ElasticsearchClient,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Shortcut into the Bulk call that indexes the specified objects
+            <para> </para>
+            https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+            </summary>
+            <param name="client"></param>
+            <typeparam name="T">The type used to infer the default index and typename</typeparam>
+            <param name="objects">List of objects to index, Id will be inferred (Id property or IdProperty attribute on type)</param>
+            <param name="type">Override the inferred typename for T</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.IndexManyExtensions.IndexMany``1(Elastic.Clients.Elasticsearch.ElasticsearchClient,System.Collections.Generic.IEnumerable{``0},Elastic.Clients.Elasticsearch.IndexName)">
+            <summary>
+            Shortcut into the Bulk call that indexes the specified objects
+            <para> </para>
+            https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+            </summary>
+            <param name="client"></param>
+            <typeparam name="T">The type used to infer the default index and typename</typeparam>
+            <param name="objects">List of objects to index, Id will be inferred (Id property or IdProperty attribute on type)</param>
+            <param name="index">Override the inferred indexname for T</param>
+            <param name="type">Override the inferred typename for T</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.IndexManyExtensions.IndexManyAsync``1(Elastic.Clients.Elasticsearch.ElasticsearchClient,System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken)">
+            <summary>
+            Shortcut into the Bulk call that indexes the specified objects
+            <para> </para>
+            https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+            </summary>
+            <param name="client"></param>
+            <typeparam name="T">The type used to infer the default index and typename</typeparam>
+            <param name="objects">List of objects to index, Id will be inferred (Id property or IdProperty attribute on type)</param>
+            <param name="type">Override the inferred typename for T</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.IndexManyExtensions.IndexManyAsync``1(Elastic.Clients.Elasticsearch.ElasticsearchClient,System.Collections.Generic.IEnumerable{``0},Elastic.Clients.Elasticsearch.IndexName,System.Threading.CancellationToken)">
+            <summary>
+            Shortcut into the Bulk call that indexes the specified objects
+            <para> </para>
+            https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+            </summary>
+            <param name="client"></param>
+            <typeparam name="T">The type used to infer the default index and typename</typeparam>
+            <param name="objects">List of objects to index, Id will be inferred (Id property or IdProperty attribute on type)</param>
+            <param name="index">Override the inferred indexname for T</param>
+            <param name="type">Override the inferred typename for T</param>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.NamespacedClientProxy">
+            <summary>
+            </summary>
+            <remarks>
+                Not intended to be used directly.
+            </remarks>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Aggregations.Aggregation">
+            <summary>
+            Base class for all aggregations.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Aggregations.AggregationCombinator">
+            <summary>
+            Combines aggregations into a single list of aggregations.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Aggregations.AggregationDictionary">
+            <summary>
+            Describes aggregations to execute as part of a search.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Aggregations.AggregateDictionary.GetAverage(System.String)">
+            <inheritdoc cref="M:Elastic.Clients.Elasticsearch.Aggregations.AggregateDictionary.GetAvg(System.String)"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMapping.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of <see cref="T:Elastic.Clients.Elasticsearch.ClrTypeMapping" />.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.ClrType">
+            <summary>
+            The CLR type the mapping relates to.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.IdPropertyName">
+            <summary>
+            The property for the given <see cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.ClrType" /> to resolve IDs from.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.IndexName">
+            <summary>
+            The default Elasticsearch index name for the given <see cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.ClrType" />.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.RelationName">
+            <summary>
+            The relation name for the given <see cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.ClrType" /> to resolve to.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.DisableIdInference">
+            <summary>
+            Disables ID inference for the given <see cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.ClrType"/>.
+            By default, the _id value for a document is inferred from a property named Id,
+            or from the property named by <see cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.IdPropertyName"/>, if set.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ClrTypeMapping`1.IdProperty">
+            <summary>
+            Set a default Id property on CLR type <typeparamref name="TDocument" /> that NEST will evaluate
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ClrTypeMapping`1.RoutingProperty">
+            <summary>
+            Provide a default routing parameter lookup based on <typeparamref name="TDocument" />
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor.#ctor(System.Type)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor" />
+            </summary>
+            <param name="type">The CLR type to map</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor.IndexName(System.String)">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.IndexName"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor.RelationName(System.String)">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.RelationName"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor.IdProperty(System.String)">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping`1.IdProperty"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor.DisableIdInference(System.Boolean)">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.DisableIdInference"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor`1.IndexName(System.String)">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.IndexName"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor`1.RelationName(System.String)">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.RelationName"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor`1.IdProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping`1.IdProperty"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor`1.IdProperty(System.String)">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping`1.IdProperty"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor`1.RoutingProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping`1.RoutingProperty"/>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor`1.DisableIdInference(System.Boolean)">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.ClrTypeMapping.DisableIdInference"/>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.ElasticsearchClientSettings">
+            <inheritdoc cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings" />
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.ElasticsearchClientSettings.SourceSerializerFactory">
+            <summary>
+                A delegate used to construct a serializer to serialize CLR types representing documents and other types related to
+                documents.
+                By default, the internal serializer will be used to serializer all types.
+            </summary>
+        </member>
+        <member name="F:Elastic.Clients.Elasticsearch.ElasticsearchClientSettings.DefaultUserAgent">
+            <summary> The default user agent for Elastic.Clients.Elasticsearch </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettings.#ctor(System.Uri)">
+            <summary>
+                Creates a new instance of connection settings, if <paramref name="uri" /> is not specified will default to
+                connecting to http://localhost:9200
+            </summary>
+            <param name="uri"></param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettings.#ctor(System.String,Elastic.Transport.IAuthenticationHeader)">
+            <summary>
+                Sets up the client to communicate to Elastic Cloud using <paramref name="cloudId" />,
+                <para><see cref="T:Elastic.Transport.CloudNodePool" /> documentation for more information on how to obtain your Cloud Id</para>
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettings.#ctor(Elastic.Transport.InMemoryConnection)">
+            <summary>
+                Instantiate connection settings using a <see cref="T:Elastic.Transport.SingleNodePool" /> using the provided
+                <see cref="T:Elastic.Transport.InMemoryConnection" /> that never uses any IO.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1">
+            <inheritdoc cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings" />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1.DefaultIndex(System.String)">
+            <summary>
+                The default index to use for a request when no index has been explicitly specified
+                and no default indices are specified for the given CLR type specified for the request.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1.DefaultFieldNameInferrer(System.Func{System.String,System.String})">
+            <summary>
+                Specifies how field names are inferred from CLR property names.
+                <para></para>
+                By default, Elastic.Clients.Elasticsearch camel cases property names.
+            </summary>
+            <example>
+                CLR property EmailAddress will be inferred as "emailAddress" Elasticsearch document field name
+            </example>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1.DefaultDisableIdInference(System.Boolean)">
+            <summary>
+                Disables automatic Id inference for given CLR types.
+                <para></para>
+                Elastic.Clients.Elasticsearch by default will use the value of a property named Id on a CLR type as the _id to send to Elasticsearch. Adding
+                a type
+                will disable this behaviour for that CLR type. If Id inference should be disabled for all CLR types, use
+                <see cref="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1.DefaultDisableIdInference(System.Boolean)" />
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1.MapRoutePropertyFor``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <inheritdoc cref="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.RouteProperties" />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1.DefaultMappingFor``1(System.Action{Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor{``0}})">
+            <summary>
+                Specify how the mapping is inferred for a given CLR type.
+                The mapping can infer the index, id and relation name for a given CLR type, as well as control
+                serialization behaviour for CLR properties.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1.DefaultMappingFor(System.Type,System.Action{Elastic.Clients.Elasticsearch.ClrTypeMappingDescriptor})">
+            <summary>
+                Specify how the mapping is inferred for a given CLR type.
+                The mapping can infer the index and relation name for a given CLR type.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientSettingsBase`1.DefaultMappingFor(System.Collections.Generic.IEnumerable{Elastic.Clients.Elasticsearch.ClrTypeMapping})">
+            <summary>
+                Specify how the mapping is inferred for a given CLR type.
+                The mapping can infer the index and relation name for a given CLR type.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.ConnectionConfiguration">
+            <inheritdoc cref="T:Elastic.Clients.Elasticsearch.ITransportClientConfigurationValues" />
+        </member>
+        <member name="F:Elastic.Clients.Elasticsearch.ConnectionConfiguration.DefaultUserAgent">
+            <summary>
+                The default user agent for Elasticsearch.Net
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ConnectionConfiguration.#ctor(System.String,Elastic.Transport.IAuthenticationHeader)">
+            <summary>
+                Sets up the client to communicate to Elastic Cloud using <paramref name="cloudId" />,
+                <para><see cref="T:Elastic.Transport.CloudNodePool" /> documentation for more information on how to obtain your Cloud Id</para>
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.ConnectionConfigurationBase`1">
+            <inheritdoc cref="T:Elastic.Clients.Elasticsearch.ITransportClientConfigurationValues" />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ConnectionConfigurationBase`1.PrettyJson(System.Boolean)">
+            <summary>
+                Forces all requests to have ?pretty=true querystring parameter appended,
+                causing Elasticsearch to return formatted JSON.
+                Defaults to <c>false</c>
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ConnectionConfigurationBase`1.IncludeServerStackTraceOnError(System.Boolean)">
+            <summary>
+                Forces all requests to have ?error_trace=true querystring parameter appended,
+                causing Elasticsearch to return stack traces as part of serialized exceptions
+                Defaults to <c>false</c>
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ITransportClientConfigurationValues.IncludeServerStackTraceOnError">
+            <summary>
+                Forces all requests to have ?error_trace=true querystring parameter appended,
+                causing Elasticsearch to return stack traces as part of serialized exceptions
+                Defaults to <c>false</c>
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings">
+            <summary>
+                Provides the connection settings for Elastic.Clients.Elasticsearch's high level <see cref="T:Elastic.Clients.Elasticsearch.ElasticsearchClient" />
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.DefaultFieldNameInferrer">
+            <summary>
+                Specifies how field names are inferred from CLR property names.
+                <para></para>
+                By default, Elastic.Clients.Elasticsearch camel cases property names.
+            </summary>
+            <example>
+                CLR property EmailAddress will be inferred as "emailAddress" Elasticsearch document field name
+            </example>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.DefaultIndex">
+            <summary>
+                The default index to use for a request when no index has been explicitly specified
+                and no default indices are specified for the given CLR type specified for the request.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.DefaultIndices">
+            <summary>
+                The default index/indices to use for a request for a given CLR type specified in the request.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.DefaultRelationNames">
+            <summary>
+                The default relation name to use for a request for a given CLR type specified in the request.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.IdProperties">
+            <summary>
+                Specify a property for a CLR type to use to infer the _id of the document when indexed in Elasticsearch.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.Inferrer">
+            <summary>
+                Infers index, type, id, relation, routing and field names
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.PropertyMappingProvider">
+            <summary>
+            Provides mappings for CLR types
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.PropertyMappings">
+            <summary>
+            Provides mappings for CLR type members
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.RouteProperties">
+            <summary>
+                Specify a property for a CLR type to use to infer the routing for of a document when indexed in Elasticsearch.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.DisableIdInference">
+            <summary>
+                Disables automatic Id inference for given CLR types.
+                <para></para>
+                Elastic.Clients.Elasticsearch by default will use the value of a property named Id on a CLR type as the _id to send to Elasticsearch. Adding
+                a type
+                will disable this behaviour for that CLR type. If Id inference should be disabled for all CLR types, use
+                <see cref="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.DefaultDisableIdInference" />
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.DefaultDisableIdInference">
+            <summary>
+                Disables automatic Id inference for all CLR types.
+                <para></para>
+                Elastic.Clients.Elasticsearch by default will use the value of a property named Id on a CLR type as the _id to send to Elasticsearch.
+                Setting this to <c>true</c>
+                will disable this behaviour for all CLR types and cannot be overridden. If Id inference should be disabled only for
+                specific types, use
+                <see cref="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.DisableIdInference" />
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.SourceSerializer">
+            <summary>
+                The serializer use to serialize CLR types representing documents and other types related to documents.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.ExperimentalEnableSerializeNullInferredValues">
+            <summary>
+            This is an advanced setting which controls serialization behaviour for inferred properies such as ID, routing and index name.
+            <para>When enabled, it may reduce allocations on serialisation paths where the cost can be more significant, such as in bulk operations.</para>
+            <para>As a by-product it may cause null values to be included in the serialized data and impact payload size. This will only be a concern should some
+            typed not have inferrence mappings defined for the required properties.</para>
+            </summary>
+            <remarks>This is marked as experiemental and may be removed or renamed in the future once its impact is evaluated.</remarks>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings.Experimental">
+            <summary>
+            Experimental settings.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.ExperimentalSettings.UseSourceSerializerForScriptParameters">
+            <summary>
+            When enabled, the parameters for a script will be serialised using the SourceSerializer.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.MemberInfoResolver">
+            <summary>
+            Resolves member infos in an expression, instance may NOT be shared.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.DateMath.ToMinThreeDecimalPlaces(System.DateTime)">
+            <summary>
+            Formats a <see cref="T:System.DateTime"/> to have a minimum of 3 decimal places if there are sub second values
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.DateMathTime">
+            <summary>
+            A time representation for use within <see cref="T:Elastic.Clients.Elasticsearch.DateMath" /> expressions.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.DateMathTime.#ctor(System.TimeSpan,System.MidpointRounding)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Elastic.Clients.Elasticsearch.DateMathTime" /> from a TimeSpan.
+            Rounding can be specified to determine how fractional second values should be rounded.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.DateMathTime.#ctor(System.Double,System.MidpointRounding)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Elastic.Clients.Elasticsearch.DateMathTime" /> from a milliseconds value.
+            Rounding can be specified to determine how fractional second values should be rounded.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.DateMathTime.#ctor(System.Int32,Elastic.Clients.Elasticsearch.DateMathTimeUnit)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Elastic.Clients.Elasticsearch.DateMathTime" /> from a factor and interval.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.DateMathTime.#ctor(System.String,System.MidpointRounding)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Elastic.Clients.Elasticsearch.DateMathTime" /> from the timeUnit string expression.
+            Rounding can be specified to determine how fractional second values should be rounded.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.DateMathTime.Factor">
+            <summary>
+            The numeric time factor
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.DateMathTime.Interval">
+            <summary>
+            The time units
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Duration">
+            <summary>
+            Represents a duration value.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Duration.ToTimeSpan">
+            <summary>
+            Converts this instance of <see cref="T:Elastic.Clients.Elasticsearch.Duration" /> to an instance of <see cref="T:System.TimeSpan" />.
+            For values in <see cref="F:Elastic.Clients.Elasticsearch.TimeUnit.Microseconds" /> and <see cref="F:Elastic.Clients.Elasticsearch.TimeUnit.Nanoseconds" />, value will be rounded to
+            the nearest Tick.
+            All other values will be rounded to the nearest Millisecond.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            <para>
+            special time values <see cref="P:Elastic.Clients.Elasticsearch.Duration.MinusOne" /> and <see cref="P:Elastic.Clients.Elasticsearch.Duration.Zero" /> do not have a <see cref="T:System.TimeSpan" />
+            representation.
+            </para>
+            <para>instance of <see cref="T:Elastic.Clients.Elasticsearch.Duration" /> has no value for <see cref="P:Elastic.Clients.Elasticsearch.Duration.Interval" /></para>
+            </exception>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientProductRegistration.HttpStatusCodeClassifier(Elastic.Transport.HttpMethod,System.Int32)">
+            <summary>
+                Elastic.Clients.Elasticsearch handles 404 in its <see cref="P:Elastic.Transport.Products.Elasticsearch.ElasticsearchResponseBase.IsValid" />, we do not want the low level client throwing
+                exceptions
+                when <see cref="P:Elastic.Transport.ITransportConfiguration.ThrowExceptions" /> is enabled for 404's. The client is in charge of
+                composing paths
+                so a 404 never signals a wrong URL but a missing entity.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ElasticsearchClientProductRegistration.TryGetServerErrorReason``1(``0,System.String@)">
+            <summary>
+                Makes the low level transport aware of Elastic.Clients.Elasticsearch's <see cref="T:Elastic.Transport.Products.Elasticsearch.ElasticsearchResponseBase" />
+                so that it can peek in to its exposed error when reporting failures.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ExpressionExtensions.AppendSuffix``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.String)">
+            <summary>
+            Appends <paramref name="suffix" /> to the path separating it with a dot.
+            This is especially useful with multi fields.
+            </summary>
+            <param name="expression">the expression to which the suffix should be applied</param>
+            <param name="suffix">the suffix</param>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.ExpressionExtensions.SuffixExpressionVisitor">
+            <summary>
+            Calls <see cref="M:Elastic.Clients.Elasticsearch.SuffixExtensions.Suffix(System.Object,System.String)" /> on a member expression.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.SuffixExtensions.Suffix(System.Object,System.String)">
+            <summary>
+            This extension method should only be used in expressions which are analysed by Elastic.Clients.Elasticsearch.
+            When analysed it will append <paramref name="suffix" /> to the path separating it with a dot.
+            This is especially useful with multi fields.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.TypeExtensions.GetAllPropertiesCore(System.Type,System.Collections.Generic.Dictionary{System.String,System.Reflection.PropertyInfo})">
+            <summary>
+            Returns inherited properties with reflectedType set to base type
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.TypeExtensions.IsHidingMember(System.Reflection.PropertyInfo)">
+            <summary>
+            Determines if a <see cref="T:System.Reflection.PropertyInfo"/> is hiding/shadowing a
+            <see cref="T:System.Reflection.PropertyInfo"/> from a base type
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.TypeExtensions.IsVirtual(System.Reflection.PropertyInfo)">
+            <summary>
+            Determines if a <see cref="T:System.Reflection.PropertyInfo"/> is virtual
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.FieldValue">
+            <summary>
+            Represents a value for a field which depends on the field mapping and is only known at runtime,
+            therefore cannot be specifically typed.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.Kind">
+            <summary>
+            The kind of value contained within this <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.Value">
+            <summary>
+            The value contained within within this <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.FieldValue.ValueKind">
+            <summary>
+            An enumeration of the possible value kinds that the <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/> may contain.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.Null">
+            <summary>
+            Represents a null value.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.True">
+            <summary>
+            Represents a true boolean value.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.False">
+            <summary>
+            Represents a false boolean value.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.Long(System.Int64)">
+            <summary>
+            Factory method to create a <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/> containing a long value.
+            </summary>
+            <param name="value">The long to store as the value.</param>
+            <returns>The new <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.Boolean(System.Boolean)">
+            <summary>
+            Factory method to create a <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/> containing a boolean value.
+            </summary>
+            <param name="value">The boolean to store as the value.</param>
+            <returns>The new <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.Double(System.Double)">
+            <summary>
+            Factory method to create a <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/> containing a double value.
+            </summary>
+            <param name="value">The double to store as the value.</param>
+            <returns>The new <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.String(System.String)">
+            <summary>
+            Factory method to create a <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/> containing a string value.
+            </summary>
+            <param name="value">The string to store as the value.</param>
+            <returns>The new <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>.</returns>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.IsString">
+            <summary>
+            Checks if the value of <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.String"/>.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.IsBool">
+            <summary>
+            Checks if the value of <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Boolean"/>.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.IsLong">
+            <summary>
+            Checks if the value of <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Long"/>.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.IsDouble">
+            <summary>
+            Checks if the value of <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Double"/>.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.IsLazyDocument">
+            <summary>
+            Checks if the value of <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.LazyDocument"/>.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.IsNull">
+            <summary>
+            Checks if the value of <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Null"/>.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.FieldValue.IsComposite">
+            <summary>
+            Checks if the value of <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Composite"/>.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.TryGetString(System.String@)">
+            <summary>
+            Gets the value when the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.String"/>.
+            </summary>
+            <param name="value">When this method returns, contains the value associated with this <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>,
+            if the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.String"/>; otherwise, the default value for the type of the value parameter.
+            This parameter is passed uninitialized.</param>
+            <returns>True if the value is a <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.TryGetBool(System.Nullable{System.Boolean}@)">
+            <summary>
+            Gets the value when the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.String"/>.
+            </summary>
+            <param name="value">When this method returns, contains the value associated with this <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>,
+            if the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.String"/>; otherwise, the default value for the type of the value parameter.
+            This parameter is passed uninitialized.</param>
+            <returns>True if the value is a <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.TryGetLong(System.Nullable{System.Int64}@)">
+            <summary>
+            Gets the value when the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Long"/>.
+            </summary>
+            <param name="value">When this method returns, contains the value associated with this <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>,
+            if the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Long"/>; otherwise, the default value for the type of the value parameter.
+            This parameter is passed uninitialized.</param>
+            <returns>True if the value is a <see cref="T:System.Int64"/>.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.TryGetDouble(System.Nullable{System.Double}@)">
+            <summary>
+            Gets the value when the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Double"/>.
+            </summary>
+            <param name="value">When this method returns, contains the value associated with this <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>,
+            if the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Double"/>; otherwise, the default value for the type of the value parameter.
+            This parameter is passed uninitialized.</param>
+            <returns>True if the value is a <see cref="T:System.Double"/>.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.TryGetLazyDocument(System.Nullable{Elastic.Clients.Elasticsearch.LazyJson}@)">
+            <summary>
+            Gets the value when the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.LazyDocument"/>.
+            </summary>
+            <param name="value">When this method returns, contains the value associated with this <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>,
+            if the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.LazyDocument"/>; otherwise, the default value for the type of the value parameter.
+            This parameter is passed uninitialized.</param>
+            <returns>True if the value is a <see cref="T:Elastic.Clients.Elasticsearch.LazyJson"/>.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.FieldValue.TryGet``1(``0@)">
+            <summary>
+            Gets the value when the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Composite"/> and the value type is <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type expected for the value.</typeparam>
+             <param name="value">When this method returns, contains the value associated with this <see cref="T:Elastic.Clients.Elasticsearch.FieldValue"/>,
+            if the value kind is <see cref="F:Elastic.Clients.Elasticsearch.FieldValue.ValueKind.Composite"/> and the value type is <typeparamref name="T"/>; otherwise, the default
+            value for the type of the value parameter. This parameter is passed uninitialized.</param>
+            <returns>True if the value is of the specified <typeparamref name="T"/> type.</returns>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Fluent.Descriptor.Equals(System.Object)">
+            <summary>
+            Hides the <see cref="M:Elastic.Clients.Elasticsearch.Fluent.Descriptor.Equals(System.Object)" /> method.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Fluent.Descriptor.GetHashCode">
+            <summary>
+            Hides the <see cref="M:Elastic.Clients.Elasticsearch.Fluent.Descriptor.GetHashCode" /> method.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Fluent.Descriptor.ToString">
+            <summary>
+            Hides the <see cref="M:Elastic.Clients.Elasticsearch.Fluent.Descriptor.ToString" /> method.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Fluent.FluentDictionary`2">
+            <summary>
+            Used in the "fluent" syntax to support chained configuration of dictionary entries.
+            </summary>
+            <typeparam name="TKey">The type for the keys of the <see cref="T:System.Collections.Generic.Dictionary`2"/>.</typeparam>
+            <typeparam name="TValue">The type for the values of the <see cref="T:System.Collections.Generic.Dictionary`2"/>.</typeparam>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Fluent.FluentDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
+            <summary>
+            Creates a new <see cref="T:Elastic.Clients.Elasticsearch.Fluent.FluentDictionary`2"/> by copying the entries from the <paramref name="source"/>.
+            </summary>
+            <param name="source">The source <see cref="T:System.Collections.Generic.IDictionary`2"/> from which entries will be copied.</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Fluent.FluentDictionary`2.Add(`0,`1)">
+            <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Add(`0,`1)" />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Fluent.FluentDictionary`2.Remove(`0)">
+            <inheritdoc cref="M:System.Collections.Generic.IDictionary`2.Remove(`0)" />
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Fluent.IBuildableDescriptor`1">
+            <summary>
+            Used to mark descriptors which can be used to build the object they describe.
+            </summary>
+            <remarks>
+            This is most useful for descriptors of variants for internally-tagged unions where an IsADictionary is used
+            </remarks>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Fluent.IsADictionaryDescriptor`4.AssignVariant(`2,`3)">
+            <summary>
+            May be overridden by derived types to add their own validation before assigning the variant.
+            e.g. <see cref="T:Elastic.Clients.Elasticsearch.Mapping.PropertiesDescriptor`1"/>.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.DefaultPropertyMappingProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.DefaultPropertyMappingProvider.CreatePropertyMapping(System.Reflection.MemberInfo)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Field.Boost">
+            <summary>
+                A boost to apply to the field
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Field.Format">
+            <summary>
+                A format to apply to the field.
+            </summary>
+            <remarks>
+                Can be used only for Doc Value Fields Elasticsearch 6.4.0+
+            </remarks>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Field.Expression">
+            <summary>
+                An expression from which the name of the field can be inferred
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Field.Name">
+            <summary>
+                The name of the field
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Field.Property">
+            <summary>
+                A property from which the name of the field can be inferred
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.IndexName">
+            <summary>
+            Represents the name of an index, which may be inferred from a <see cref="P:Elastic.Clients.Elasticsearch.IndexName.Type"/>.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.IndexNameConverter">
+            <summary>
+            Converts an <see cref="T:Elastic.Clients.Elasticsearch.IndexName"/> to and from its JSON representation.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.IPropertyMappingProvider">
+            <summary>
+            Provides mappings for CLR types.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.IPropertyMappingProvider.CreatePropertyMapping(System.Reflection.MemberInfo)">
+            <summary>
+            Creates an <see cref="T:Elastic.Clients.Elasticsearch.PropertyMapping" /> for a <see cref="T:System.Reflection.MemberInfo" />.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Routing.From``1(``0)">
+            <summary> Use the inferred routing from <paramref name="document" /> </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.PropertyMapping">
+            <summary>
+            Represents meta data about a property which may be used by inferrence and during serialization.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.PropertyMapping.Ignore">
+            <summary>
+            The property should be ignored during serialization.
+            <para>
+            NOTE: This only applies if a custom source serializer is registered which supports
+            modifying the JSON contract. The <see cref="T:Elastic.Clients.Elasticsearch.Serialization.DefaultSourceSerializer"/> does not support
+            ignoring properties via a <see cref="T:Elastic.Clients.Elasticsearch.PropertyMapping"/>.
+            </para>
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.PropertyMapping.Name">
+            <summary>
+            The JSON name for the property.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.IsADictionary`2">
+            <summary>
+            A base dictionary type for internally tagged unions.
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.LazyJson">
+            <summary>
+            <para>Lazily deserializable JSON.</para>
+            <para>Holds raw JSON bytes which can be lazily deserialized to a specific <see cref="T:System.Type"/> using the source serializer at a later time.</para>
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.LazyJson.As``1">
+            <summary>
+            Creates an instance of <typeparamref name="T" /> from this
+            <see cref="T:Elastic.Clients.Elasticsearch.LazyJson" /> instance.
+            </summary>
+            <typeparam name="T">The type</typeparam>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.ReadOnlyIndexNameDictionary`1">
+            <summary>
+            A specialised readonly dictionary for <typeparamref name="TValue"/> data, keyed by <see cref="T:Elastic.Clients.Elasticsearch.IndexName"/>.
+            <para>This supports inferrence enabled lookups by ensuring keys are sanitized when storing the values and when performing lookups.</para>
+            </summary>
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Requests.ApiUrls">
+            <summary>
+                Each Request type holds a static instance of this class which creates cached builders for each
+                of the defined urls in the json spec.
+            </summary>
+        </member>
+        <member name="F:Elastic.Clients.Elasticsearch.Requests.ApiUrls._fixedUrl">
+            <summary>
+                If the spec only defines a single non parameterizable route this allows us to shortcircuit and avoid hitting
+                the cached string builders.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Requests.ApiUrls.#ctor(System.String[])">
+            <summary> Only intended to be created once per request and stored in a static </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Elastic.Clients.Elasticsearch.Requests.ApiUrls.Routes" -->
+        <member name="P:Elastic.Clients.Elasticsearch.Requests.IRequest`1.RequestParameters">
+            <summary>
+            Used to describe request parameters that are not part of the body. e.g. query string, connection configuration
+            overrides, etc.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Requests.PlainRequest`1.ErrorTrace">
+            <summary>Include the stack trace of returned errors.</summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Requests.PlainRequest`1.FilterPath">
+            <summary>
+                A comma-separated list of filters used to reduce the response.
+                <para>
+                    Use of response filtering can result in a response from Elasticsearch
+                    that cannot be correctly deserialized to the respective response type for the request.
+                    In such situations, use the low level client to issue the request and handle response deserialization.
+                </para>
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Requests.PlainRequest`1.Human">
+            <summary>Return human readable values for statistics.</summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Requests.PlainRequest`1.Pretty">
+            <summary>Pretty format the returned JSON response.</summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Requests.PlainRequest`1.SourceQueryString">
+            <summary>
+                The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST
+                requests.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Requests.PlainRequest`1.RequestConfiguration">
+            <summary>
+            Specify settings for this request alone, handy if you need a custom timeout or want to bypass sniffing, retries
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Requests.Request`1.RequestDefaults(`0)">
+            <summary>
+                Allows a request implementation to set certain request parameter defaults, use sparingly!
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Requests.RequestDescriptor`2">
+            <summary>
+            Base class for all request descriptor types.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Requests.RequestDescriptor`2.RequestConfiguration(System.Func{Elastic.Transport.RequestConfigurationDescriptor,Elastic.Transport.IRequestConfiguration})">
+            <summary>
+                Specify settings for this request alone, handy if you need a custom timeout or want to bypass sniffing, retries
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Requests.RequestDescriptor`2.ToString">
+            <summary>
+                Hides the <see cref="M:Elastic.Clients.Elasticsearch.Requests.RequestDescriptor`2.ToString" /> method.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Requests.RequestDescriptor`2.Equals(System.Object)">
+            <summary>
+                Hides the <see cref="M:Elastic.Clients.Elasticsearch.Requests.RequestDescriptor`2.Equals(System.Object)" /> method.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Requests.RequestDescriptor`2.GetHashCode">
+            <summary>
+                Hides the <see cref="M:Elastic.Clients.Elasticsearch.Requests.RequestDescriptor`2.GetHashCode" /> method.
+            </summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.Requests.RouteValues.ContainsId">
+            <summary>
+            Used specifically by index requests to determine whether to use PUT or POST.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Infer.Field``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Nullable{System.Double},System.String)">
+            <summary>
+                Create a strongly typed string field name representation of the path to a property
+                <para>e.g. p => p.Array.First().SubProperty.Field will return 'array.subProperty.field'</para>
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Infer.Field``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Nullable{System.Double},System.String)">
+            <inheritdoc cref="M:Elastic.Clients.Elasticsearch.Infer.Field``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Nullable{System.Double},System.String)" />
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Union`2">
+            <summary>
+            Represents the union of two types, <typeparamref name="TFirst" /> and <typeparamref name="TSecond" />. Used
+            in scenarios where an Elasticsearch API may accept more than one different input data structure.
+            </summary>
+            <typeparam name="TFirst">The first type</typeparam>
+            <typeparam name="TSecond">The second type</typeparam>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Union`2.#ctor(`0)">
+            <summary>
+            Creates an new instance of <see cref="T:Elastic.Clients.Elasticsearch.Union`2" /> that encapsulates <paramref name="item" /> value
+            </summary>
+            <param name="item">The value to encapsulate</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Union`2.#ctor(`1)">
+            <summary>
+            Creates an new instance of <see cref="T:Elastic.Clients.Elasticsearch.Union`2" /> that encapsulates <paramref name="item" /> value
+            </summary>
+            <param name="item">The value to encapsulate</param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Union`2.Match(System.Action{`0},System.Action{`1})">
+            <summary>
+            Runs an <see cref="T:System.Action`1" /> delegate against the encapsulated value
+            </summary>
+            <param name="first">The delegate to run when this instance encapsulates an instance of <typeparamref name="TFirst" /></param>
+            <param name="second">The delegate to run when this instance encapsulates an instance of <typeparamref name="TSecond" /></param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Union`2.Match``1(System.Func{`0,``0},System.Func{`1,``0})">
+            <summary>
+            Runs a <see cref="T:System.Func`2" /> delegate against the encapsulated value
+            </summary>
+            <param name="first">The delegate to run when this instance encapsulates an instance of <typeparamref name="TFirst" /></param>
+            <param name="second">The delegate to run when this instance encapsulates an instance of <typeparamref name="TSecond" /></param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.TaskId.#ctor(System.String)">
+            <summary>
+            A task id exists in the form [node_id]:[task_id].
+            </summary>
+            <param name="taskId">The task identifier as a string.</param>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.UnsupportedProductException">
+            <summary>
+            Thrown when the client pre-flight check determines that the server is not a supported Elasticsearch product.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Experimental.AggregateDictionaryExtensions.GetTerms(Elastic.Clients.Elasticsearch.Aggregations.AggregateDictionary,System.String)">
+            <summary>
+            WARNING: EXPERIMENTAL API
+            <para>This API provides simplified access to terms aggregations.</para>
+            </summary>
+            <remarks>Experimental APIs are subject to changes or removal and should be used with caution.</remarks>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Experimental.AggregateDictionaryExtensions.GetTerms``1(Elastic.Clients.Elasticsearch.Aggregations.AggregateDictionary,System.String)">
+            <summary>
+            WARNING: EXPERIMENTAL API
+            <para>This API provides simplified access to terms aggregations.</para>
+            </summary>
+            <remarks>Experimental APIs are subject to changes or removal and should be used with caution.</remarks>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.BulkAllResponse.Page">
+            <summary>This is the Nth buffer.</summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.BulkAllResponse.Retries">
+            <summary>The number of back off retries were needed to store this document.</summary>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.BulkAllResponse.Items">
+            <summary>The items returned from the bulk response</summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.IHelperCallable">
+            <summary>
+            May be applied to helper requests where they may be called by an upstream helper.
+            </summary>
+            <remarks>
+            For example, the reindex helper calls down into the bulk helper and scroll helpers.
+            <see cref="T:Elastic.Clients.Elasticsearch.BulkAllRequest`1"/> therefore implements this interface.
+            </remarks>
+        </member>
+        <member name="P:Elastic.Clients.Elasticsearch.IHelperCallable.ParentMetaData">
+            <summary>
+            The <see cref="T:Elastic.Transport.RequestMetaData"/> of the parent helper when this requestis created by a parent
+            helper.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.ProducerConsumerBackPressure.#ctor(System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Simple back pressure implementation that makes sure the minimum max concurrency between producer and consumer
+            is not amplified by the greedier of the two by more then the backPressureFactor
+            </summary>
+            <param name="backPressureFactor">
+            The maximum amplification back pressure of the greedier part of the producer consumer pipeline, if null
+            defaults to 4
+            </param>
+            <param name="maxConcurrency">The minimum maximum concurrency which would be the bottleneck of the producer consumer pipeline</param>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Serialization.DefaultRequestResponseSerializer">
+            <summary>
+            The built in internal serializer that the high level client Elastic.Clients.Elasticsearch uses.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Serialization.ExtraSerializationData">
+            <summary>
+            This actually does not ever get used as a converter. It's just an ugly hack to provide a way to
+            access out settings in generated converters without requiring a mechanism to conditionally add them.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Serialization.IStreamSerializable">
+            <summary>
+            Used to mark types which expect to directly serialise into a stream. This supports non-json compliant output such as NDJSON.
+            </summary>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Serialization.IStreamSerializable.Serialize(System.IO.Stream,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings,Elastic.Transport.SerializationFormatting)">
+            <summary>
+            Serialize the object into the supplied <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="stream"></param>
+            <param name="settings"></param>
+            <param name="formatting"></param>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Serialization.IStreamSerializable.SerializeAsync(System.IO.Stream,Elastic.Clients.Elasticsearch.IElasticsearchClientSettings,Elastic.Transport.SerializationFormatting)">
+            <summary>
+            Asynchronously serialize the object into the supplied <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="stream"></param>
+            <param name="settings"></param>
+            <param name="formatting"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Serialization.ResponseItemConverterFactory">
+            <summary>
+            A converter factory able to provide a converter to handle (de)serializing <see cref="T:Elastic.Clients.Elasticsearch.Core.MGet.ResponseItem`1"/>.
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Serialization.ISelfSerializable">
+            <summary>
+            Marks a type to provide it's own serialization code.
+            <para><b>IMPORTANT:</b> This should only be used for types that are only ever serialized and never deserialised, such as descriptors.</para>
+            </summary>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Serialization.SettingsJsonConverter`1">
+            <summary>
+            Used for derived converters which need access to <see cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings"/> in order to serialize.
+            </summary>
+            <typeparam name="T">The type of object or value handled by the converter.</typeparam>
+        </member>
+        <member name="M:Elastic.Clients.Elasticsearch.Serialization.SettingsJsonConverter`1.GetSettings(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Access the <see cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings"/> for a given <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.
+            </summary>
+            <param name="options">The <see cref="T:System.Text.Json.JsonSerializerOptions"/> for which the <see cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings"/> should be retrieved.</param>
+            <returns>An <see cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings"/> instance related to the provided <see cref="T:System.Text.Json.JsonSerializerOptions"/>.</returns>
+            <exception cref="T:System.Text.Json.JsonException">Thrown if a corresponding <see cref="T:Elastic.Clients.Elasticsearch.IElasticsearchClientSettings"/> instance cannot be found for the <see cref="T:System.Text.Json.JsonSerializerOptions"/>.</exception>
+        </member>
+        <member name="T:Elastic.Clients.Elasticsearch.Serialization.SourceSerialisation">
+            <summary>
+            May be used by requests that need to serialise only part of their source rather than the request object itself.
+            </summary>
+        </member>
+    </members>
+</doc>
