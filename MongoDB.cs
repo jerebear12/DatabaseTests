@@ -33,16 +33,16 @@ namespace DatabaseTests
 
             await collection.InsertOneAsync(bsonDocument);
         }
-        public async Task<UserItem> ReadUserItem(string itemId)
+        public UserItem ReadUserItem(string itemId)
         {
             IMongoDatabase db = GetDatabase(Database);
             var collection = db.GetCollection<UserItem>(Collection);
 
-            var doc = await collection.Find(x => x.Uid == itemId).FirstOrDefaultAsync();
+            var doc = collection.Find(x => x.Uid == itemId).FirstOrDefault();
 
             if (doc != null)
             {
-                Console.WriteLine("Document found: " + doc.Id.ToString());
+                Console.WriteLine("Document found: " + doc.Uid.ToString());
             }
             return doc;
         }
@@ -51,7 +51,7 @@ namespace DatabaseTests
             IMongoDatabase db = GetDatabase(Database);
             var collection = db.GetCollection<UserItem>(Collection);
 
-            var filter = Builders<UserItem>.Filter.Eq("_id", itemId);
+            var filter = Builders<UserItem>.Filter.Eq("Uid", itemId);
             var update = Builders<UserItem>.Update.Set(itemKey, itemValue);
 
             var result = await collection.UpdateOneAsync(filter, update);
@@ -62,10 +62,19 @@ namespace DatabaseTests
             IMongoDatabase db = GetDatabase(Database);
             var collection = db.GetCollection<UserItem>(Collection);
 
-            var deleteFilter = Builders<UserItem>.Filter.Eq("_id", itemId);
-
+            var deleteFilter = Builders<UserItem>.Filter.Eq("Uid", itemId);
+            
             var result = await collection.DeleteOneAsync(deleteFilter);
-            Console.WriteLine("Deletion Success: " + result.IsAcknowledged);
+            if (result.IsAcknowledged)
+            {
+                Console.WriteLine("Deletion Success: " + result.IsAcknowledged);
+            }
+            else
+            {
+                Console.WriteLine("Delete failed");
+            }
+            
+
         }
         private IMongoDatabase GetDatabase(string databaseName)
         {

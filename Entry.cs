@@ -10,13 +10,21 @@ using VelocityDb;
 namespace DatabaseTests
 {
     [ElasticsearchType(IdProperty = nameof(Id))]
-    public abstract class Entry : OptimizedPersistable
+    public abstract class Entry // : OptimizedPersistable
     {
-        public string Uid = Guid.NewGuid().ToString();
+        protected Entry()
+        {
+            this.Uid = Guid.NewGuid().ToString();
+            this._id = Guid.NewGuid().ToString();
+        }
+        public string _id { get; private set; }
+        public string Uid { get; private set; }
+        //public string Uid = Guid.NewGuid().ToString();
         public string _Name;
-        public string Name {
+        public string Name
+        {
             get { return _Name; }
-            set { Update(); _Name = value; }
+            set { _Name = value; }
         }
     }
 }

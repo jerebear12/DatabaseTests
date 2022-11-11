@@ -92,3 +92,5 @@ F:\FirstStep\Databases\DatabaseTests\bin\Debug\Nest.pdb
 F:\FirstStep\Databases\DatabaseTests\bin\Debug\Nest.xml
 F:\FirstStep\Databases\DatabaseTests\bin\Debug\VelocityDb.dll
 F:\FirstStep\Databases\DatabaseTests\bin\Debug\VelocityDb.xml
+F:\FirstStep\Databases\DatabaseTests\bin\Debug\Bogus.dll
+F:\FirstStep\Databases\DatabaseTests\bin\Debug\Bogus.xml

@@ -14,7 +14,7 @@ namespace DatabaseTests
         public string _Width;
         public string Width {
             get { return _Width; }
-            set { Update(); _Width = value; }
+            set { _Width = value; }
         }
     }
 }
